@@ -1,6 +1,7 @@
 import "./App.css";
 import { useForm } from "react-hook-form";
 import image from "./web.png";
+import logo from "./agmo-logo.png";
 
 function App() {
   const {
@@ -12,19 +13,20 @@ function App() {
   const onSubmit = (data) => {
     console.log(data);
   };
-  
+
   return (
     <div className="App">
-      <div className="flex lg:flex-row flex-col">
-        <div className=" lg:basis-9/12 ">
+      <div className="flex flex-col h-screen md:flex-row">
+        <div className="relative basis-1/5 md:basis-9/12">
           <img
-            className="object-cover bg-center h-40 w-full lg:h-screen"
+            className="absolute object-cover w-full h-full brightness-50 g-center h md:h-screen"
             alt="login-agmo"
             src={image}
           />
+          <img className="absolute w-32 top-1/2 left-1/2" style={{transform: "translate(-50%, -50%)"}} alt="login-agmo" src={logo} />
         </div>
-        <div className="basis-1/2 flex flex-col place-content-center text-left p-7 lg:p-32">
-          <div className="font-sans font-bold text-2xl">
+        <div className="flex flex-col my-auto text-left basis-1/2 place-content-center p-7 xl:p-32 ">
+          <div className="font-sans text-2xl font-bold">
             <p>Hello,</p>
             <p>Welcome Back</p>
           </div>
@@ -34,7 +36,7 @@ function App() {
             className="flex flex-col mt-10"
           >
             <input
-              className=" p-2 border-2 border-gray-400 rounded-md"
+              className="p-2 border-2 border-gray-400 rounded-md "
               {...register("email", {
                 required: "This field is required!",
                 pattern: {
@@ -49,18 +51,18 @@ function App() {
 
             <input
               type="password"
-              className=" mt-5 p-2 border-2 border-gray-400 rounded-md"
+              className="p-2 mt-5 border-2 border-gray-400 rounded-md "
               {...register("password", { required: "This field is required!" })}
               placeholder="Password"
             />
             <p className="text-red-500">{errors.password?.message}</p>
             <div className="flex justify-between mt-5">
               <div>
-                <input type="checkbox" className=" mr-2" />
-                <label className="text-gray-500 text-sm">Remember Me</label>
+                <input type="checkbox" className="mr-2 " />
+                <label className="text-sm text-gray-500">Remember Me</label>
               </div>
               <div>
-                <p className="text-gray-500 font-semibold text-sm hover:cursor-pointer hover:text-blue-700 hover:underline">
+                <p className="text-sm font-semibold text-gray-500 hover:cursor-pointer hover:text-blue-700 hover:underline">
                   Forgot Your Password?
                 </p>
               </div>
@@ -69,7 +71,7 @@ function App() {
             <input
               type="submit"
               value="Log In"
-              className="mt-10 bg-black text-white p-2 rounded-lg w-2/6 hover:bg-slate-600 hover:cursor-pointer"
+              className="w-2/6 p-2 mt-10 text-white bg-black rounded-lg hover:bg-slate-600 hover:cursor-pointer"
             />
           </form>
         </div>
